@@ -1,0 +1,26 @@
+<% provide(:title, 'Entries') %>
+<h1>Entries</h1>
+<div style="margin-left:270px;"">
+  <%= will_paginate @posts %>
+</div>
+<div class="col-md-6" style="margin-top:50px;margin-left:300px">
+
+  <ul class="microposts">
+    <% @posts.each do |post| %>
+    <li>
+      <%= link_to gravatar_for(post.user, size: 50), user_path(post.user.id) %>
+      <span class="user"><%= link_to post.user.name, user_path(post.user.id) %></span>
+      <span class="title"><h4>Title: <%= link_to post.title, micropost_path(post.id) %></h4></span>
+      <span class="content"><%= post.content %></span>
+      <span class="timestamp" style="margin-left:300px">
+        Posted <%= time_ago_in_words(post.created_at) %> ago.
+      </span>
+    </li>
+
+    <% end %>
+  </ul>
+
+</div>
+<div style="margin-left:270px;"">
+  <%= will_paginate @posts %>
+</div>

@@ -1,0 +1,27 @@
+<hr>
+<%= render 'comments/form' %>
+
+<% @comments.each do |comment| -%>
+  <table>
+  <tr>
+    <td width="200px"><%= link_to comment.user.name, comment.user %></td>
+    <td >
+       <span style="margin-left:20px"> <%= comment.content %></span>
+    </td>
+    <td>
+      <% if logged_in?
+        if comment.user.id == current_user.id%>
+         <%= link_to "Delete",[comment.micropost,comment], method: :delete, :style => "margin-left:200px" ,
+        data: { confirm: "You sure?" } %>
+        <% end
+        end%>
+    </td>
+  </tr>
+
+
+    <br />
+</table>
+    <p style="margin-left:180px"><%= time_ago_in_words(comment.created_at) %> ago</p>
+
+<% end %>
+

@@ -1,0 +1,11 @@
+<%= form_for(@comment ||= micropost.comments.find) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+  <%= f.text_area :content %>
+  <%= f.hidden_field :comment_id, value: @comment.id %>
+  </div>
+  <br>
+  <br>
+  <%= f.submit "Comment">
+
+<% end %>

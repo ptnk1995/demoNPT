@@ -1,0 +1,47 @@
+<% provide(:title, "Home") %>
+<% if logged_in? %>
+  <div class="row">
+    <aside class="col-md-4">
+      <section class="user_info">
+        <%= render 'shared/user_info' %>
+      </section>
+      <section class="stats">
+        <%= render 'shared/stats' %>
+      </section>
+
+      <section class="micropost_form">
+        <%= render 'shared/micropost_form' %>
+      </section>
+    </aside>
+        <div class="col-md-8">
+      <h3>Entries Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
+
+  </div>
+<% else %>
+<h1>Entries</h1>
+<div style="margin-left:270px;"">
+<%= will_paginate @posts %>
+</div>
+<div class="col-md-6" style="margin-top:50px;margin-left:300px">
+
+  <ul class="microposts">
+  <% @posts.each do |post| %>
+  <li>
+    <%= link_to gravatar_for(post.user, size: 50), user_path(post.user.id) %>
+    <span class="user"><%= link_to post.user.name, user_path(post.user.id) %></span>
+    <span class="title"><h4>Title: <%= link_to post.title, micropost_path(post.id) %></h4></span>
+    <span class="content"><%= post.content %></span>
+    <span class="timestamp" style="margin-left:300px">
+      Posted <%= time_ago_in_words(post.created_at) %> ago.
+    </span>
+  </li>
+    <% end %>
+  </ul>
+
+</div>
+<div style="margin-left:270px;"">
+<%= will_paginate @posts %>
+</div>
+<% end %>
