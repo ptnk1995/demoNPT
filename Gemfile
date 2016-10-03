@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+gem 'sqlite3',     '1.3.9'
 gem 'rails',        '4.2.6'
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'bcrypt',               '3.1.7'
@@ -20,7 +20,7 @@ gem 'sdoc',         '0.4.0', group: :doc
   gem 'web-console', '2.0.0.beta3'
   gem 'spring',      '1.1.3'
 group :development, :test do
-  gem 'sqlite3',     '1.3.9'
+
 end
 
 group :test do
