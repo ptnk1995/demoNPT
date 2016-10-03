@@ -40,7 +40,7 @@ end
 def destroy
   @micropost.destroy
   flash[:success] = "Entry deleted"
-  redirect_to 'home/home' || root_url
+  redirect_to root_url
 end
 
 private
