@@ -3,32 +3,15 @@ class CommentsController < ApplicationController
  before_action :find_post
  before_action :find_comment, only:[:show, :destroy, :edit, :update, :comment_ower]
  before_action :comment_ower, only:[:show, :destroy, :edit, :update]
-# def create
-#   @comment = @micropost.comments.create(params[:comment].permit(:content))
-#   @comments = Comment.where(micropost_id: @micropost).order('created_at DESC')
-#   @comment.user_id= current_user.id
-#   @comment.save
-#   flash[:success] = "Comment sucess!"
-#   if @comment.save
-#     redirect_to micropost_path(@micropost)
-#   else
-#     render 'microposts/show'
-#   end
-# end
 
  def create
-  @micropost = Micropost.find(params[:micropost_id])
   @comment = @micropost.comments.create(params[:comment].permit(:content))
   @comments = Comment.where(micropost_id: @micropost).order('created_at DESC')
-
   @comment.user_id= current_user.id
-
-  respond_to do |format|
+  @comment.save
+  flash[:success] = "Comment sucess!"
   if @comment.save
-
-    format.html {redirect_to micropost_path(@micropost), notice: 'Comment was successfully created'}
-    format.json {render json: @comment, status: :created, location: @comment }
-    flash[:success] = "Comment sucess!"
+    redirect_to micropost_path(@micropost)
   else
     render 'microposts/show'
   end
