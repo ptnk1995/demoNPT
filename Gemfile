@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-gem 'sqlite3',     '1.3.9'
 gem 'rails',        '4.2.6'
 gem 'bootstrap-sass',       '3.2.0.0'
 gem 'bcrypt',               '3.1.7'
@@ -16,10 +15,11 @@ gem 'jquery-rails', '4.0.3'
 gem 'turbolinks',   '2.3.0'
 gem 'jbuilder',     '2.2.3'
 gem 'sdoc',         '0.4.0', group: :doc
-  gem 'byebug',      '3.4.0'
-  gem 'web-console', '2.0.0.beta3'
-  gem 'spring',      '1.1.3'
+gem 'byebug',      '3.4.0'
+gem 'web-console', '2.0.0.beta3'
+gem 'spring',      '1.1.3'
 group :development, :test do
+  gem 'sqlite3',     '1.3.9'
 
 end
 
