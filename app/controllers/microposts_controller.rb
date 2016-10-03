@@ -1,6 +1,6 @@
 class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy, :edit]
-  before_action :correct_user,   only: [:destroy, :edit
+  before_action :correct_user,   only: [:destroy, :edit]
 
   def index
     @posts = Micropost.paginate page: params[:page], per_page: 3
